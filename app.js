@@ -42,3 +42,4 @@ const rider = require("./routes/rider")
 app.use("/", rider)
 startServer()
 
+export default app;
