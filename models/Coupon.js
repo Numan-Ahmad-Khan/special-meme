@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const db = require("../datbase/Postgres");
+const db = require("../database/Postgres");
 
 const Coupon = db.define("Coupon", {
     id: {

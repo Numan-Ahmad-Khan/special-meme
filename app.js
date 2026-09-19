@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require("express")
 const app = express()
-const db =require("./datbase/Postgres")
+const db =require("./database/Postgres")
 const port = process.env.PORT || 3300
 
 const payment = require("./routes/payment");
@@ -42,4 +42,4 @@ const rider = require("./routes/rider")
 app.use("/", rider)
 startServer()
 
-export default app;
+module.exports = app;

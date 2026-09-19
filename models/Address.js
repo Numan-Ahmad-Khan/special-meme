@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const db = require("../datbase/Postgres");
+const db = require("../database/Postgres");
 const Address = db.define("Address",{
     id: {
         type: DataTypes.UUID,

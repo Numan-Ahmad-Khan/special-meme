@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const db = require("../datbase/Postgres");
+const db = require("../database/Postgres");
 const Config = db.define("Config",{
     id:{
         type: DataTypes.STRING,
