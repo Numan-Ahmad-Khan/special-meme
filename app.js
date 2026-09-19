@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require("express")
 const app = express()
 const db =require("./database/Postgres")
-const port = process.env.PORT || 3300
+const port = 3000
 
 const payment = require("./routes/payment");
 const rawBody = express.raw({type: "application/json"});
