@@ -3,7 +3,7 @@ const User = require("../models/Users");
 const Otp = require("../models/Otp");
 
 const { generateOTP } = require("../utils/generateOTP");
-const { sendEmail } = require("./emailServices");
+const { sendEmail } = require("./email.services");
 
 const generateAndSendOTP = async (userId) => {
     const user = await User.findOne({

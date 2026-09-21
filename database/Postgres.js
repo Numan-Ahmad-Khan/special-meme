@@ -1,10 +1,14 @@
 const { Sequelize } = require('sequelize');
 
-const db = new Sequelize('new001', 'postgres', 'admin', {
-  host: 'localhost',
-  dialect: 'postgres',
-  logging: false,
+const db = new Sequelize(process.env.DATABASE_URL, {
+    dialect: "postgres"
 });
+
+// const db = new Sequelize('new001', 'postgres', 'admin', {
+//   host: 'localhost',
+//   dialect: 'postgres',
+//   logging: false,
+// });
 
 // Test the connection
 async function testConnection() {

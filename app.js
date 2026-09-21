@@ -1,18 +1,27 @@
 require('dotenv').config();
-const express = require("express")
-const app = express()
-const db =require("./database/Postgres")
-const port = 3000
+
+const express = require("express");
+const app = express();
+
+const db = require("./database/Postgres");
+const port = 3000;
+
+const redis = require("./config/redis");
 
 const payment = require("./routes/payment");
-const rawBody = express.raw({type: "application/json"});
+const rawBody = express.raw({ type: "application/json" });
+
 app.use("/payment", rawBody, payment);
 
-app.use(express.json())
+app.use(express.json());
+
 async function startServer() {
     try {
         await db.sync({ alter: true });
         console.log('PostgreSQL database tables synchronized successfully.');
+
+        await redis.connect();
+        console.log("Redis connected successfully.");
 
         app.listen(port, () => {
             console.log(`Running at http://localhost:${port}`);
@@ -23,23 +32,25 @@ async function startServer() {
     }
 }
 
-app.get("/", (req,res)=>{
-    res.send("Hello")
-})
-const auth = require("./routes/auth")
-app.use("/", auth)
+app.get("/", (req, res) => {
+    res.send("Hello");
+});
 
-const user = require("./routes/user")
-app.use("/", user)
+const auth = require("./routes/auth");
+app.use("/", auth);
 
-const admin = require("./routes/admin")
-app.use("/", admin)
+const user = require("./routes/user");
+app.use("/", user);
 
-const otp = require("./routes/otp")
-app.use("/", otp)
+const admin = require("./routes/admin");
+app.use("/", admin);
 
-const rider = require("./routes/rider")
-app.use("/", rider)
-startServer()
+const otp = require("./routes/otp");
+app.use("/", otp);
+
+const rider = require("./routes/rider");
+app.use("/", rider);
+
+startServer();
 
 module.exports = app;
