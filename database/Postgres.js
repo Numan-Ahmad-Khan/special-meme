@@ -1,7 +1,8 @@
 const { Sequelize } = require('sequelize');
-
+const pg = require('pg'); 
 const db = new Sequelize(process.env.DATABASE_URL, {
-    dialect: "postgres"
+    dialect: "postgres",
+    dialectModule: pg,
 });
 
 // const db = new Sequelize('new001', 'postgres', 'admin', {
