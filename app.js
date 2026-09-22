@@ -33,7 +33,7 @@ async function startServer() {
 }
 
 app.get("/", (req, res) => {
-    res.send("Hello");
+    res.send("<h1>Hello, Gabravo mat ye chal raha ha bas frontend nahi ha wo b aajayai ga</h1>");
 });
 
 const auth = require("./routes/auth");
